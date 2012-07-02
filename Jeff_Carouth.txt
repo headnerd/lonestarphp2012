@@ -1,0 +1,61 @@
+Micro Frameworks and JavaScript Applications
+Jeff Carouth
+joind.in/6351
+
+Micro Framework Manifesto
+
+-with extensiveness of PHP do we really need the full-stack/huge frameworks on top?
+
+WHERE DOES MICRO FRAMEWORK FIT IN?
+initially started for simple scripting of pages
+1998 - revamped to hypertext preprocessing & easily extendable 
+
+WHERE TO GO?
+microphp.org
+packagist.org (Composer - dependency manager)
+getcomposer.org
+
+SLIM MICRO FRAMEWORK
+Power due to exposure of RESTful verbs (get, post, put, delete)
+*by default, Slim does not understand JSON
+
+RESTful VERBS & ROUTING
+GET /resource -> returns set of all resources
+POST /resource -> create a new resource
+GET /resource/<id> -> retrieve a specific resource by id
+PUT /resource/<id> -> update a specific resource
+DELETE /resource/<id> -> delete a specific resource
+
+NOTE: is it necessary to check HTTP Responses?
+
+Using JavaScript on the front end
+-Backbone.js to consume API
+
+Backbone.js is not "true" MVC
+-see slide for good overview of Backbone style MVC
+
+IMPLEMENTATION GUIDE
+1 - Retrieve data from API
+	-> using bb model for single task item and bb collection for list of tasks
+	-> comparator - tells how to order tasks
+2 - Render HTML elements
+	-> using bb views
+3 - Handle events
+	-> things like change, click, hover, etc
+	-> define what events we are watching for and what to do when event occurs
+	-> this.model.save() calls PUT method (or POST?)
+	-> this.model.destroy() calls DELETE within API
+4 - Configure the application
+	-> Backbone.emulateHTTP = true; (passes HTTP method override to allow PUT/DELETE on browsers that don't support them)
+
+
+DEMO TIME
+->use Inspect Element - Network to view what is happening behind the curtain
+
+WRAP UP
+-MicroPHP is about exposing small-footprint libraries that solve common problems
+-Elastica available through Composer/Packagist
+-GitHub/jcarouth/pomtrac <- lsp12 branch will not change
+
+QUESTIONS
+-none

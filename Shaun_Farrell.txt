@@ -1,0 +1,9 @@
+Elasticsearch for PHP
+Shaun Farrell
+
+HOLY F*CK THIS IS AWESOME!!!
+We seriously need this!!!
+Faceted search is the sh*t.
+Synonym files and analyzers
+-Deep Ellum == DeepEllum, Deepellum, deepellum
+Elastica - PHP Library @ github.com/ruflin/elastica (?)

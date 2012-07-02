@@ -1,0 +1,78 @@
+Vance Lucas - RESTful APIs & Self-Building Applications
+
+http://vancelucas.com
+@vlucas
+Birghtbit => http://brightb.it
+
+=> many starting to use Hypermedia APIs now
+
+Current State of REST APIs
+*most REST APIs are basically data
+*make request for URL (that you have to know ahead of time)
+*read the properties/data sent back
+*many APIs starting to include url
+*PROBLEM: no set way to link resources in JSON/XML
+*people trying to create media types/formats to link resources
+
+NEW FORMAT - HAL :: Hypertext Application Language
+includes named key called "_links"
+EX:
+{
+	{
+		_links: {
+			self: {href: "http://budgetapp.dev/budgets/73"}
+		}
+	...
+	...
+	}
+}
+
+*now we can write a script to capture the _links and iterate
+*links are nice, but they are still READ-ONLY, and API docs are still REQUIRED
+
+Levels of APIs
+0 - The Swamp of POX (Plain Old XML)
+	*think XML-RPC type interface
+	*always posted to single URL
+	*can cache POST requests
+1 - Resources
+	*adding in different URLs (e.g. /blog, /posts/12)
+2 - HTTP Verbs
+	*where most frameworks sit today (GET, POST, PUT, DESTROY)
+3 - Hypermedia Controls
+	*interlinking, rich data in the API
+	*Level 3 is a pre-condition of REST -> everything else is "wrong"
+	*Roy T. Fielding => http://roy.gbiv.com/untangled/2008/rest-apis-must-be-hypertext-driven
+
+You MUST have hypermedia controls to be considered RESTful
+*the API should provide/drive every choice available, users only responsible for making choices
+
+WHAT ARE THESE HYPERMEDIA CONTROLS?
+1 - LINKS
+2 - FORMS * these are tricky
+
+*for forms, use JSON Schema or URI templates (using tokens, similar to routing) or HAL specification
+HAL really only deals with links right now, basically read-only now
+*HAL requires you to maintain state on the client
+
+Link "rel" Types
+-self
+-next
+-search
+
+**NO OFFICIAL SPEC FOR LINKING OR DESCRIBING RESOURCES FOR JSON/XML
+->will likely need to combine 2 or 3 to achieve desired goal
+
+DEMO TIME
+-using both JSON Schema and HAL Spec for app
+-mobile demo app built with Titanium
+-demo shows "power" of hypermedia
+-it's about the client assuming NOTHING
+-all the client does is know the format and parse the data
+
+GET INVOLVED
+HAL Discuss Group - groups.google.com/group/hal-discuss
+API Craft Group - groups.google.com/group/api-craft
+
+QUESTIONS
+Any frameworks for helping switch? => no

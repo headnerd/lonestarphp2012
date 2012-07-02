@@ -1,0 +1,63 @@
+Fast, Not Furious: Performance Tuning That Works
+Davey Shafik
+
+GOAL => Help you help yourselves to find the problems you have.
+
+Jeff Atwood -> "Hardware is cheap. Programmers are expensive."
+Davey Shafik -> "Only if you respect the hardware."
+
+Only change one thing at a time
+
+COMMON CAUSES
+1 - datastore
+2 - external resources
+3 - bad code
+
+"The only great code is code that never has to run."
+
+1 - DO YOU HAVE A PROBLEM?
+-test where you deploy
+	-> benchmark on production hardware
+-what are your goals
+	-> 100 users with less than 1 second response time
+
+2 - PERFORMANCE LOOP
+benchmark, profile, make changes
+->do one thing at a time
+NOTE: the act of profiling affects the speed at which your code runs
+
+BENCHMARKING WITH xhprof
+-built to be deployed in production environment (it's fast)
+-metrics over time via GUI (xh-gui @ github.com/preinheimer/xhprof.git)
+-can namespace or add nodes individually to separate stats
+
+USING xhprof/xh-gui
+-> add prepend/append config to php.ini OR setup Apache VirtualHost
+-> wall time is closest to what users will experience
+-> callgraph will highlight "slow" areas
+-> number of function calls can be useful, but frameworks can throw this off
+-> pie chart can be useful to highlight time sinks
+-> colors in table match colors in pie chart
+-> @4 indicates 4th iteration of a function (notation is @num)
+-> check # of calls and % of time in function for oddities
+-> Simplified URL = generalized code flow for similar pages/functions
+-> clicking on URL will bring up time series data on the URL performance
+-> deltas compare two (or more?) specific runs to help quantify performance gain/loss
+
+APC => first run after enabling can be much slower as it fills cache, subsequent runs will speed up
+
+NOTE TO SELF: Can we fold in Bootstrap or Foundation to improve xh-gui?
+
+CACHING
+-> APC not good in multi-node environments
+-> use key-value stores : Memcache (Davey's pref)
+-> Problem: no way to selectively clear cache, it blows it ALL away
+-> use namespacing (see slides for process)
+-> namespace segmenting allows for further separation (see slides for process)
+	-> example.org
+		-> example.org_session
+		-> example.org_admin
+		-> example.org_public
+		-> example.org_data
+
+joind.in/talk/view/6349

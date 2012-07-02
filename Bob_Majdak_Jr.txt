@@ -1,0 +1,14 @@
+Pixel Punching with PHP
+Bob Majdak Jr.
+
+ImageMagick - the utility
+Imagick - the PHP binding
+-Layer based <= we need this for CYO ads
+-available with apt-get
+
+=> ALWAYS BE SURE TO DESTROY YOUR IMAGES WHEN DONE
+=> a 3MB jpeg takes about 7MB of memory
+=>. Probably need about 300MB of memory if doing anything other than cropping (we'll need to upgrade server)
+**Can we bring Bob in for advertising event work?
+
+Demo code on GitHub => github.com/bobmajdakjr

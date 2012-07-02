@@ -1,0 +1,21 @@
+User Interface is more than Pixels
+Keith Casey
+@CaseySoftware
+
+Pixels are easy
+
+Design Principles
+C - Consistent
+R - 
+A - 
+P - 
+
+If we break our apps out of the browser, everything changes...
+->think about mobiles, income and technology inequality issues.
+
+DEMO
+
+-> this is interactive and data can pass both ways
+-> not really made for deep interaction
+
+VoIP Drupal

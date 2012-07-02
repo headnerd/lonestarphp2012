@@ -1,0 +1,27 @@
+Chris Hartjes - Building Testable Application
+
+Automate tests on push, not commits
+Jenkins @ jenkins-ci.org => look for test templates
+Travis @ travis-ci.org => self-hosted version coming?
+
+Architecture, the Lost Years :: Uncle Bob Martin @ Ruby Mid-West (look for video)
+
+“Your framework is a detail, not the core of your application” -Bob Martin
+
+Keep business logic framework agnostic
+
+Two types of Dependency Injection
+1 - Constructor
+2 - Setter method
+
+Objects should only know how to use objects you send, not know how to create them. 
+
+Checkout Etsy’s PHPUnit extensions @ github.com
+
+PHPUnit tests should NOT touch the database
+API calls should be done thru wrappers
+
+Checkout Behat for UA testing. Great if have app that is too cumbersome to unit test/refactor. Also good for integration testing. (Behat = behavioral testing)
+
+http://grumpy-testing.com
+6335 @ joined.in

@@ -1,0 +1,74 @@
+MongoDB and PHP
+Derick Rethans (@derickr)
+
+joind.in/6353
+
+-document storage and retrieval engine (NoSQL)
+document -> collection -> database -> database server
+
+everything in mongo shell is javascript
+
+install PHP extension through pecl, add into php.ini
+
+TERMINOLOGY
+document : data (row)
+collection : contains documents (table, view)
+index
+embedded document : similar to join
+
+documents stored as BSON (Binary JSON)
+have keys and values and embedded documents
+_id assigned automatically if not passed in
+
+INSERTING A DOCUMENT
+-convert everything to arrarys
+-if everything goes well, returns boolean true
+
+*Schema design not necessary, but improves performance
+
+every document needs a unique ID
+
+checking for errors -> use try/catch block
+-use 'safe' => true to have db check for duplicate entry
+-use 'j' => true to confirm change written to journal
+
+QUERYING
+findOne() 	-> finds single document
+			-> pass in array of elements to search by
+			-> if not searching on a unique key, mongo returns first instance
+			-> with embedded documents use . notation (e.g. 'talks.title' => 'XDebug')
+find()		-> doesn't actually run query, establishes a pointer/cursor to hold results
+sort()		-> -1 == descending, 1 == ascending
+limit()		-> obvious
+skip()		-> skip the first X results
+
+Query operators all start with $
+-> when using operators in array key, use SINGLE QUOTES so PHP does not try to evaluate as a variable
+-> have compare and logical operators and array operators
+
+PROJECTION -> return ONLY those fields indicated
+	-> example: array( 'name' => true, 'population' => true, '_id' => false )
+	-> by default queries return whole document
+
+MongoDB can only return a single document that cannot exceed 16MB
+
+Indexing	-> _id indexed automatically, create index with ensureIndex()
+			-> example: $c -> ensureIndex(array('name' => 1));
+			-> a collection can have at most 64 indexes (well, 63, because _id is already indexed)
+			-> can't be used on negation queries, tricky math, most regex, JS expressions in $where clauses, map/reduce
+
+QUESTIONS
+*How does MongoDB deal with many-to-many relations?
+	-> two collections with pivot collection (just like RDBMS); needs 3 queries though
+	-> embed one document inside another; takes 2 queries
+*Locking?
+	-> currently at server instance level
+	-> 2.2 will move to database level
+*Sessions in MongoDB?
+	-> not advised, not really meant for this
+	-> looking to create MongoDB session handler, but not imminent
+*Can you force a specific schema>
+	-> not at database level
+	-> check OEM (?); like ORM for Mongo
+
+Slides: http://derickrethans.nl/talks/mongo-lonestar12

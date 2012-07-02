@@ -1,0 +1,18 @@
+Improving Legacy Code Bases
+Paul Jones
+
+Book Reco - The Road Less Travelled, M. Scott Peck, MD
+
+=> lookup Paul's talk on project organization
+
+Paying Off Technical Debt
+-like paying off financial debt
+-get the stuff first, but have to pay for it eventually
+-no easy way out : either suffer as things are or suffer through change
+OPTIONS: 
+1) Big-Bang Approach : rewrite	-> effort = estimate x 2, with next higher unit (eg. est = 2 mos, time = 4 years)
+2) Incremental Approach - small changes across entire code base; like paying off a loan; keep the application running the whole time
+STEPS
+a) Convert as much as you can to classes and remove includes
+b) Convert to dependency injection as much as possible
+Dep Inj => instead of reaching out from inside of class to grab dependency, declare the dependency inside the class and pull the dependency into the class

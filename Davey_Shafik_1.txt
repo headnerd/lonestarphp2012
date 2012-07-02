@@ -1,0 +1,15 @@
+PHP 5.4 : The New Bits
+Davey Shafik
+
+Performance boost again -> roughly same boost again as update from 5.2 to 5.3
+Now UTF-8
+New array syntax drops array() for []
+
+Built in CLI Server
+-docroot is whatever the current directory is
+-start with php -S localhost:8080 (can be any host:port)
+-can also point to a router file at start
+-DO NOT USE IN PRODUCTION!!!
+
+Check out Davey's FRAPI - Framework for APIs
+getfrapi.com
